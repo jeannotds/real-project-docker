@@ -8,4 +8,7 @@ RUN npm ci
 
 COPY . .
 
-CMD [ "npm", "run", "dev" ]
+EXPOSE 3004
+
+# CMD [ "npm", "run", "dev" ]
+CMD [ "npm", "start" ]
