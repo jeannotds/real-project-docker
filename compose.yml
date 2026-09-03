@@ -1,6 +1,8 @@
 services:
   app: 
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
     # restart: unless-stopped
     restart: on-failure
     ports:
@@ -18,7 +20,7 @@ services:
         condition: service_healthy
         restart: true
     volumes:
-      - .:/app/node_modules
+      - .:/app
       - real-node-modules:/app/node_modules
   
   db:

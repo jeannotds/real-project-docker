@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3004;
 
 app.get("/", (req, res) => {
   res.status(200).json({
-    message: "API en bonne santé",
+    message: "API Docker DEV + Nodemon fonctionne 🔥",
   });
 });
 
