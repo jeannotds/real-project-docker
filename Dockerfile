@@ -1,13 +1,14 @@
-FROM node:20
+FROM node:20-alpine
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm ci
+RUN npm ci --omit=dev
 
 COPY . .
 
 EXPOSE 3004
 
-CMD [ "npm", "start" ]
+# CMD [ "npm", "start" ]
+CMD [ "node", "index.js" ]
