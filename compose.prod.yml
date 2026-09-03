@@ -1,13 +1,14 @@
 services:
-  app: 
-    build: 
+
+  app:
+    build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
+
     restart: unless-stopped
-    # restart: on-failure
 
     ports:
-      - 3004:3004 
+      - 3004:3004
 
     environment:
       - DB_NAME=${DB_NAME}
@@ -22,15 +23,12 @@ services:
       db:
         condition: service_healthy
         restart: true
-    volumes:
-      - .:/app
-      - real-node-modules:/app/node_modules
-  
+        
   db:
     image: postgres:16
+
     restart: unless-stopped
-    # ports:
-    #   - 5432:5432
+
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
@@ -38,18 +36,14 @@ services:
 
     volumes:
       - postgres-data:/var/lib/postgresql/data
-      
+
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+
       interval: 5s
       timeout: 5s
       retries: 5
-      # start_period: 5s
 
 volumes:
-  real-node-modules:
+
   postgres-data:
-
-
-
-    
