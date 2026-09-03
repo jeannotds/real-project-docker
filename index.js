@@ -29,3 +29,9 @@ async function listenServer() {
 await listenServer();
 
 await initializeDatabase();
+
+// Test error failure
+setTimeout(() => {
+  console.log("💥 Simulation d'un crash !");
+  process.exit(1);
+}, 5000);
