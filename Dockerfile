@@ -28,6 +28,12 @@ COPY --from=dependencies /app/node_modules ./node_modules
 # Copier le code de l'application
 COPY . .
 
+# Donner les permissions à l'utilisateur node
+RUN chown -R node:node /app
+
+# Utiliser l'utilisateur non-root
+USER node
+
 EXPOSE 3004
 
 CMD [ "node", "index.js" ]
