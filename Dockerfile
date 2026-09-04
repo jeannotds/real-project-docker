@@ -15,7 +15,7 @@ RUN npm ci --omit=dev
 # Etape 2 : Production
 # =====================
 
-FROM node:20 AS production
+FROM node:20-alpine AS production
 
 WORKDIR /app
 
