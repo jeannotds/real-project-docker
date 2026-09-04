@@ -12,6 +12,13 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "ok",
+    message: "Application is healthy",
+  });
+});
+
 app.use(express.json());
 
 app.use("/users", useRoute);
